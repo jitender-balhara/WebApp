@@ -1,31 +1,31 @@
 
 node {
     // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
-    def server = Artifactory.server "artifactory"
+    //def server = Artifactory.server "artifactory"
     // Create an Artifactory Maven instance.
-    def rtMaven = Artifactory.newMavenBuild()
-    def buildInfo
+    //def rtMaven = Artifactory.newMavenBuild()
+    //def buildInfo
     
- rtMaven.tool = "maven"
+ //rtMaven.tool = "maven"
 
     stage('Clone sources') {
         git url: 'https://github.com/jitender-balhara/webapp.git'
     }
 
-    stage('Artifactory configuration') {
+    stage('Compile Code') {
         // Tool name from Jenkins configuration
-        rtMaven.tool = "maven"
+        //rtMaven.tool = "maven"
         // Set Artifactory repositories for dependencies resolution and artifacts deployment.
-        rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
-        rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+        //rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
+        //rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+	    build 'compile-web-app'
     }
 
-    stage('Maven build') {
-        buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+    stage('Deploy to QA') {
+        //buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+	    build 'deploy-to-qa'
     }
 
-    stage('Publish build info') {
-        server.publishBuildInfo buildInfo
     }
     }
 	 
