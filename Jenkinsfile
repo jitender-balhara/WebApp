@@ -30,6 +30,7 @@
     }
     */
 pipeline {				//indicate the job is written in Declarative Pipeline 
+	agent any
     stages {
         stage ("Group_6_Pipeline") 
         {		//an arbitrary stage name
