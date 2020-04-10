@@ -32,13 +32,17 @@
 pipeline {				//indicate the job is written in Declarative Pipeline 
 	agent any
     stages {
-        stage ("Group_6_Pipeline") 
+        stage ("Compile Web App") 
         {		//an arbitrary stage name
             steps 
             {
                 build 'compile-web-app'	//this is where we specify which job to invoke.
             }
-		steps 
+            
+        }
+        stage ("Deploy To QA") 
+        {		//an arbitrary stage name
+        steps 
             {
                 build 'deploy-to-qa'	//this is where we specify which job to invoke.
             }
