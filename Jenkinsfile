@@ -1,5 +1,5 @@
 
-node {
+/*node {
     // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
     //def server = Artifactory.server "artifactory"
     // Create an Artifactory Maven instance.
@@ -28,4 +28,16 @@ node {
 
     }
     }
+    */
+pipeline {				//indicate the job is written in Declarative Pipeline 
+    stages {
+        stage ("Group_6_Pipeline") 
+        {		//an arbitrary stage name
+            steps 
+            {
+                build 'compile-web-app'	//this is where we specify which job to invoke.
+            }
+        }
+    }
+}
 	 
