@@ -38,6 +38,10 @@ pipeline {				//indicate the job is written in Declarative Pipeline
             {
                 build 'compile-web-app'	//this is where we specify which job to invoke.
             }
+		steps 
+            {
+                build 'deploy-to-qa'	//this is where we specify which job to invoke.
+            }
         }
     }
 }
