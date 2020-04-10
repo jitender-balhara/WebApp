@@ -47,6 +47,33 @@ pipeline {				//indicate the job is written in Declarative Pipeline
                 build 'deploy-to-qa'	//this is where we specify which job to invoke.
             }
         }
+        stage ("Functional Testing") 
+        {		//an arbitrary stage name
+        steps 
+            {
+                build 'functional-testing'	//this is where we specify which job to invoke.
+            }
+        }
+        stage ("Performance Testing") 
+        {		//an arbitrary stage name
+        steps 
+            {
+                build 'performance-testing'	//this is where we specify which job to invoke.
+            }
+        }
+        stage ("Deployment to Production") 
+        {		//an arbitrary stage name
+        steps 
+            {
+                build  'deploy-to-prod'	//this is where we specify which job to invoke.
+            }
+        }
+        stage ("Production Sanity Testing") 
+        {		//an arbitrary stage name
+        steps 
+            {
+                build  'Sanity-test-prod'	//this is where we specify which job to invoke.
+            }
+        }
     }
 }
-	 
